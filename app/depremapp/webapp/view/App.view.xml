@@ -1,0 +1,95 @@
+<mvc:View
+    controllerName="depremapp.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true"
+    height="100%">
+    <App id="app">
+        <pages>
+            <Page id="_IDGenPage" title="{i18n>appTitle}" class="sapUiResponsiveContentPadding">
+                <headerContent>
+                    <Button id="_IDGenButton" 
+                        icon="sap-icon://refresh" 
+                        press=".onRefresh"
+                        tooltip="{i18n>refreshTooltip}"
+                        type="Emphasized"/>
+                </headerContent>
+                
+                <List
+                    id="depremList"
+                    items="{view>/depremler}"
+                    mode="SingleSelectMaster"
+                    growing="true"
+                    growingThreshold="10"
+                    noDataText="{i18n>noDataText}">
+                    <headerToolbar>
+                        <OverflowToolbar id="_IDGenOverflowToolbar">
+                            
+                            <ToolbarSpacer id="_IDGenToolbarSpacer"/>
+                            <Label id="_IDGenLabel" text="Toplam Deprem:" class="sapUiTinyMarginEnd"/>
+                            <ObjectNumber id="_IDGenObjectNumber1"
+                                number="{= ${view>/depremler}.length }"
+                                state="Success"
+                                emphasized="true"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <items>
+                        <CustomListItem id="_IDGenCustomListItem" type="Active">
+                            <l:VerticalLayout id="_IDGenVerticalLayout" class="sapUiSmallMargin">
+                                <l:HorizontalLayout id="_IDGenHorizontalLayout">
+                                    <ObjectIdentifier id="_IDGenObjectIdentifier"
+                                        title="{view>location}"
+                                        text="{
+                                            path: 'view>date',
+                                            formatter: '.formatTarih'
+                                        }"
+                                        class="sapUiSmallMarginEnd"/>
+                                    
+                                    <ObjectNumber id="_IDGenObjectNumber"
+                                        number="{view>magnitude}"
+                                        state="{
+                                            path: 'view>magnitude',
+                                            formatter: '.formatDepremSeverity'
+                                        }"
+                                        emphasized="true"/>
+                                </l:HorizontalLayout>
+                                
+                                <l:HorizontalLayout id="_IDGenHorizontalLayout1" class="sapUiSmallMarginTop">
+                                    <ObjectStatus id="_IDGenObjectStatus2"
+                                        text="Derinlik: {view>depth} km"
+                                        icon="sap-icon://dimension"
+                                        class="sapUiTinyMarginEnd"/>
+                                    
+                                    <ObjectStatus id="_IDGenObjectStatus"
+                                        text="Yakınlık: {
+                                            path: 'view>depth',
+                                            formatter: '.formatYakinlik'
+                                        }"
+                                        icon="sap-icon://distance"
+                                        class="sapUiTinyMarginEnd"/>
+                                    
+                                    <ObjectStatus id="_IDGenObjectStatus1"
+                                        text="Saat: {
+                                            path: 'view>date',
+                                            formatter: '.formatSaat'
+                                        }"
+                                        icon="sap-icon://time-entry-request"/>
+                                </l:HorizontalLayout>
+                                
+                                <l:HorizontalLayout id="_IDGenHorizontalLayout2" class="sapUiSmallMarginTop">
+                                    <Text id="_IDGenText" text="Koordinatlar: {view>latitude}, {view>longitude}" 
+                                          class="sapUiTinyMarginEnd"/>
+                                    <core:Icon id="_IDGenIcon" src="sap-icon://globe" 
+                                               color="#0070F2"
+                                               size="1rem"/>
+                                </l:HorizontalLayout>
+                            </l:VerticalLayout>
+                        </CustomListItem>
+                    </items>
+                </List>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

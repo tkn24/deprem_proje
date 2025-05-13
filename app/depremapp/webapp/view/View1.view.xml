@@ -1,0 +1,28 @@
+
+<mvc:View
+    controllerName="deprem.ui.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    height="100%">
+    <Page id="_IDGenPage1"
+        title="Son Depremler"
+        showNavButton="false">
+        <smartFilterBar:SmartFilterBar
+            id="smartFilterBar"
+            entitySet="getSonDepremler"
+            persistencyKey="SmartFilter_Explored">
+        </smartFilterBar:SmartFilterBar>
+        <smartTable:SmartTable
+            id="smartTable"
+            entitySet="getSonDepremler"
+            smartFilterId="smartFilterBar"
+            tableType="ResponsiveTable"
+            header="Deprem Listesi"
+            showRowCount="true"
+            enableAutoBinding="true"
+            initiallyVisibleFields="date,time,magnitude,depth,location">
+        </smartTable:SmartTable>
+    </Page>
+</mvc:View>

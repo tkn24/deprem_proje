@@ -1,0 +1,28 @@
+/* Enter your custom styles here */
+
+/* Deprem şiddetine göre özel renkler */
+.sapMObjectStatusSuccess {
+    color: #2b7c2b !important;
+}
+.sapMObjectStatusError {
+    color: #cc1919 !important;
+}
+.sapMObjectStatusWarning {
+    color: #d08014 !important;
+}
+/* Liste öğeleri için gölge efekti */
+.sapMCustomListItem {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+}
+/* Büyüklük göstergesi */
+.sapMObjectNumberEmphasized {
+    font-size: 1.25rem;
+}
+/* Responsive düzen */
+@media (max-width: 600px) {
+    .depremBilgi {
+        flex-direction: column;
+    }
+}

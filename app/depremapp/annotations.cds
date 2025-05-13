@@ -1,0 +1,1 @@
+using DepremService as service from '../../srv/deprem-service';
